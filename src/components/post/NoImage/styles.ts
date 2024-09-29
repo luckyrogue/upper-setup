@@ -1,7 +1,7 @@
 export const noImageStyles = {
   box: {
-    height: "270px",
-    width: "245px",
+    height: "calc(200px + 2vw)",
+    width: "calc(180px + 2vw)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -9,7 +9,7 @@ export const noImageStyles = {
     borderRadius: "10px",
   },
   imageIcon: {
-    height: "130px",
-    width: "152px",
+    height: "calc(100px + 1.5vw)",
+    width: "calc(120px + 1.5vw)",
   },
 };

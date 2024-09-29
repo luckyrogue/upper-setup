@@ -1,4 +1,4 @@
 export interface IResultsProps {
-  searchQuery: string;
-  resultsNumber: number;
+  query: string;
+  postsLength: number;
 }

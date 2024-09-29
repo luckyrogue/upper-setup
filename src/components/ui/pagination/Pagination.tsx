@@ -9,8 +9,7 @@ export const Pagination: React.FC<IPaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-
-  if (!totalPages) return null
+  if (!totalPages) return null;
 
   const handlePageChange: THandlePageChange = (page) => {
     if (page < 1 || page > totalPages || page === currentPage) {

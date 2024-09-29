@@ -1,26 +1,14 @@
-import React, { CSSProperties, useEffect, useState } from "react";
-import { useGetPosts } from "../../../services/useGetPosts/useGetPosts.ts";
+import React, { CSSProperties } from "react";
 import { resultsStyles } from "./styles.ts";
+import { IResultsProps } from "./types.ts";
 
-export const Results: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState<string | null>(null);
-  const { posts } = useGetPosts();
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const search = urlParams.get("search");
-
-    if (!search) setSearchQuery("");
-
-    setSearchQuery(search);
-  }, []);
-
+export const Results: React.FC<IResultsProps> = ({ query, postsLength }) => {
   return (
     <div style={resultsStyles.resultsContainer}>
       You searched for:
-      <span style={resultsStyles.searchQuery}>{searchQuery}</span>
+      <span style={resultsStyles.searchQuery}>{query}</span>
       <div style={resultsStyles.resultsBlock as CSSProperties}>
-        {posts?.length ?? 0} results
+        {postsLength ?? 0} results
       </div>
     </div>
   );

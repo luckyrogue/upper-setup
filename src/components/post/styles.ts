@@ -1,18 +1,18 @@
 export const postStyles = {
   container: {
-    width: "245px",
-    height: "381px",
+    width: "calc(180px + 5vw)",
+    height: "calc(300px + 5vw)",
   },
   image: {
-    height: "270px",
-    width: "245px",
+    height: "calc(200px + 3vw)",
+    width: "100%",
   },
   infoBlock: {
     display: "flex",
     flexDirection: "column",
-    marginTop: "23px",
+    marginTop: "calc(15px + 1vw)",
     fontWeight: "400",
-    fontSize: "16px",
-    lineHeight: "22.4px",
+    fontSize: "calc(14px + 0.3vw)",
+    lineHeight: "calc(18px + 0.3vw)",
   },
 };

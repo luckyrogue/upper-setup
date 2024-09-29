@@ -16,4 +16,3 @@ const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = globalStyles;
 document.head.appendChild(styleSheet);
-

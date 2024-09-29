@@ -1,12 +1,16 @@
 export const headerStyles = {
   header: {
     display: "flex",
+    width: "100%",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "38px 0",
+    padding: "calc(10px + 1vw) 0",
+    margin: "0 auto",
+    maxWidth: "1500px",
+    boxSizing: "border-box",
   },
   logo: {
-    width: "208px",
-    height: "53px",
+    width: "calc(100px + 5vw)",
+    height: "auto",
   },
 };

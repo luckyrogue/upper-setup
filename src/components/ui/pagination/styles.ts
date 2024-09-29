@@ -1,5 +1,6 @@
 export const paginationStyles = {
   paginationWrapper: {
+    marginTop: "32px",
     display: "flex",
     justifyContent: "center",
     padding: "10px 0",

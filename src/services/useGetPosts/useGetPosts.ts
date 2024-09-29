@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { axiosInstance } from "../../api/axiosInstance";
 import { TPost, TGetPostsResponse, TPagination, TUseGetPosts } from "./types";
-import { queryHandler } from "../../utils/queryHandler/queryHandler.ts";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const i = import.meta.env.VITE_API_I;
@@ -11,9 +10,11 @@ export const useGetPosts = (): TUseGetPosts => {
   const [pagination, setPagination] = useState<TPagination | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [query, setQuery] = useState<string | undefined>("Batman");
+  const [page, setPage] = useState<number>(1);
 
   const fetchPosts = useCallback(
-    async (searchQuery?: string, page: number = 1) => {
+    async (searchQuery: string, page: number = 1) => {
       setLoading(true);
       setError(null);
 
@@ -26,7 +27,6 @@ export const useGetPosts = (): TUseGetPosts => {
             page,
           },
         });
-
         if (response.data.Response === "True") {
           const totalItems = Number(response.data.totalResults);
           const perPage = 8;
@@ -38,10 +38,9 @@ export const useGetPosts = (): TUseGetPosts => {
             currentPage: page,
             totalItems,
           });
-          queryHandler(searchQuery, page);
         } else {
           setPosts([]);
-          setError("No movies found");
+          setError("No posts");
         }
       } catch (error) {
         setError("Failed to fetch posts");
@@ -50,22 +49,25 @@ export const useGetPosts = (): TUseGetPosts => {
         setLoading(false);
       }
     },
-    [],
+    []
   );
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get("search") || "";
-    const page = parseInt(urlParams.get("page") || "1", 10);
 
-    fetchPosts(searchQuery, page).then((r) => r);
-  }, [fetchPosts]);
+  useEffect(() => {
+    if (query) {
+      fetchPosts(query, page).then((r) => r);
+    }
+  }, [fetchPosts, query, page]);
 
   return {
     posts,
     pagination,
     loading,
     error,
+    query,
+    setQuery,
     fetchPosts,
+    page,
+    setPage,
   };
 };

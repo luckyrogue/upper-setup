@@ -3,33 +3,30 @@ import { headerStyles } from "./styles.ts";
 import { assetsConstant } from "../../../assets/assetsConstant.ts";
 import { Input } from "../input/Input.tsx";
 import { Profile } from "../../layout/profile/Profile.tsx";
-import { useGetPosts } from "../../../services/useGetPosts/useGetPosts.ts";
-import { useState } from "react";
-import { queryHandler } from "../../../utils/queryHandler/queryHandler.ts";
+import { CSSProperties, useMemo } from "react";
 import { debounce } from "../../../utils/debounce/debounce.ts";
+import { IHeaderProps } from "./types.ts";
 
-export const Header: React.FC = () => {
+export const Header: React.FC<IHeaderProps> = ({ query, fetchPosts }) => {
 
-  const { loading, fetchPosts } = useGetPosts();
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
-  const debouncedFetchPosts = debounce((query: string) => {
-    fetchPosts(query, 1).then((r) => r);
-  }, 3000);
+  const debouncedFetchPosts = useMemo(
+    () =>
+      debounce((query: string) => {
+        fetchPosts(query, 1).then((r) => r);
+      }, 500),
+    [fetchPosts],
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSearchQuery(value);
-    queryHandler(searchQuery, 1)
-    debouncedFetchPosts(value)
+    debouncedFetchPosts(value);
   };
 
-
   return (
-    <header style={headerStyles.header}>
+    <header style={headerStyles.header as CSSProperties}>
       <img style={headerStyles.logo} src={assetsConstant.LOGO} alt="" />
       <Input
-        loading={loading}
+        value={query}
         placeholder={"Batman"}
         maxWidth={"280px"}
         handleInputChange={handleInputChange}

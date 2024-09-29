@@ -2,6 +2,7 @@ import React, { CSSProperties } from "react";
 
 export interface IInputProps extends IInputStylesProps {
   type?: string;
+  value?: string;
   loading?: boolean;
   placeholder?: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -2,6 +2,7 @@ import * as React from "react";
 import { postStyles } from "./styles.ts";
 import { IPostProps } from "./types.ts";
 import { NoImage } from "./NoImage/NoImage.tsx";
+import { CSSProperties } from "react";
 
 export const Post: React.FC<IPostProps> = ({
   img,
@@ -17,7 +18,7 @@ export const Post: React.FC<IPostProps> = ({
       ) : (
         <NoImage />
       )}
-      <div style={postStyles.infoBlock}>
+      <div style={postStyles.infoBlock as CSSProperties}>
         <span>Name: {title}</span>
         <span>Year: {year}</span>
         <span>imdbID: {imdbId}</span>

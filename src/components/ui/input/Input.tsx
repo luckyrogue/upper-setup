@@ -6,6 +6,7 @@ import { inputStyles } from "./styles.ts";
 
 export const Input: React.FC<IInputProps> = ({
   type = "text",
+  value,
   loading = false,
   placeholder,
   handleInputChange,
@@ -21,6 +22,7 @@ export const Input: React.FC<IInputProps> = ({
       <input
         style={styles.input}
         type={type}
+        value={value}
         placeholder={placeholder}
         onChange={handleInputChange}
       />
