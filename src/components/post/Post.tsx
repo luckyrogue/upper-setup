@@ -13,8 +13,8 @@ export const Post: React.FC<IPostProps> = ({
 }) => {
   return (
     <div style={postStyles.container}>
-      {img !== null ? (
-        <img style={postStyles.image} src={img} alt={`${title}-img`} />
+      {img !== "N/A" ? (
+        <img style={postStyles.image} src={String(img)} alt={`${title}-img`} />
       ) : (
         <NoImage />
       )}

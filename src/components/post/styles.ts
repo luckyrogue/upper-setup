@@ -6,6 +6,7 @@ export const postStyles = {
   image: {
     height: "calc(200px + 3vw)",
     width: "100%",
+    borderRadius: '10px'
   },
   infoBlock: {
     display: "flex",
