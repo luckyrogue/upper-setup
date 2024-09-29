@@ -4,19 +4,22 @@ import { assetsConstant } from "../../../assets/assetsConstant.ts";
 import { Input } from "../input/Input.tsx";
 import { Profile } from "../../layout/profile/Profile.tsx";
 import { useGetPosts } from "../../../services/useGetPosts/useGetPosts.ts";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { queryHandler } from "../../../utils/queryHandler/queryHandler.ts";
+import { debounce } from "../../../utils/debounce/debounce.ts";
 
 export const Header: React.FC = () => {
 
   const { loading, fetchPosts } = useGetPosts();
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  const debouncedFetchPosts = useMemo(() => debounce(fetchPosts, 3000), [fetchPosts]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchQuery(value);
     queryHandler(searchQuery, 1)
-    fetchPosts(searchQuery, 1).then(r => r)
+    debouncedFetchPosts(value)
   };
 
 
