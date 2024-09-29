@@ -23,6 +23,7 @@ export const loaderStyles = {
     borderTop: "5px solid #fff",
     borderRadius: "50%",
     animation: "spin 1s linear infinite",
+    marginBottom: "15px"
   },
 };
 

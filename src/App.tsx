@@ -27,7 +27,7 @@ function App() {
     [fetchPosts],
   );
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value;
     debouncedFetchPosts(value);
   };
