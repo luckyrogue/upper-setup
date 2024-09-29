@@ -4,7 +4,7 @@ import { assetsConstant } from "../../../assets/assetsConstant.ts";
 import { Input } from "../input/Input.tsx";
 import { Profile } from "../../layout/profile/Profile.tsx";
 import { useGetPosts } from "../../../services/useGetPosts/useGetPosts.ts";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { queryHandler } from "../../../utils/queryHandler/queryHandler.ts";
 import { debounce } from "../../../utils/debounce/debounce.ts";
 
@@ -13,7 +13,9 @@ export const Header: React.FC = () => {
   const { loading, fetchPosts } = useGetPosts();
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const debouncedFetchPosts = useMemo(() => debounce(fetchPosts, 3000), [fetchPosts]);
+  const debouncedFetchPosts = debounce((query: string) => {
+    fetchPosts(query, 1).then((r) => r);
+  }, 3000);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
