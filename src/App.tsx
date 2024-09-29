@@ -5,12 +5,31 @@ import { Post } from "./components/post/Post.tsx";
 import { Results } from "./components/layout/results/Results.tsx";
 import { NoResults } from "./components/layout/noResults/NoResults.tsx";
 import { Loader } from "./components/layout/loader/Loader.tsx";
+import { useMemo, useState } from "react";
+import { SearchModal } from "./components/layout/seachModal/SearchModal.tsx";
+import { debounce } from "./utils/debounce/debounce.ts";
+import * as React from "react";
 
 function App() {
   const { loading, pagination, posts, query, fetchPosts } = useGetPosts();
+  const [searchModal, setSearchModal] = useState(false);
 
   const handlePageChange = (page: number) => {
     fetchPosts(query || "Batman", page).then((r) => r);
+  };
+
+  const debouncedFetchPosts = useMemo(
+    () =>
+      debounce((query: string) => {
+        const searchQuery = query.trim() === "" ? "Batman" : query;
+        fetchPosts(searchQuery, 1).then((r) => r);
+      }, 1000),
+    [fetchPosts],
+  );
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    debouncedFetchPosts(value);
   };
 
   if (loading) return <Loader />;
@@ -18,7 +37,17 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header query={String(query)} fetchPosts={fetchPosts} />
+        <Header
+          setSearchModal={setSearchModal}
+          query={String(query)}
+          handleInputChange={handleInputChange}
+        />
+        {searchModal && (
+          <SearchModal
+            query={String(query)}
+            handleInputChange={handleInputChange}
+          />
+        )}
         <div className="content">
           <Results
             query={String(query)}

@@ -2,6 +2,9 @@ export const profileStyles = {
   profileBox: {
     display: "flex",
     alignItems: "center",
+    "@media (maxWidth: 768px)": {
+      display: "none",
+    },
   },
   profileIcon: {
     fontSize: "25px",

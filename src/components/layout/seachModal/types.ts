@@ -1,7 +1,6 @@
 import React from "react";
 
-export interface IHeaderProps {
+export interface ISearchModal {
   query: string;
-  setSearchModal: (searchModal: (prevState: boolean) => boolean) => void;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

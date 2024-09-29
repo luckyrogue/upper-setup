@@ -13,4 +13,17 @@ export const headerStyles = {
     width: "calc(100px + 5vw)",
     height: "auto",
   },
+  rightContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+  },
+  searchIcon: {
+    fontSize: "20px",
+    cursor: "pointer",
+  },
+  profileIcon: {
+    fontSize: "25px",
+    cursor: "pointer",
+  },
 };
