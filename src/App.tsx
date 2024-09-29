@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header fetchPosts={fetchPosts} />
+        <Header query={String(query)} fetchPosts={fetchPosts} />
         <div className="content">
           <Results query={String(query)} postsLength={Number(pagination?.totalItems)}  />
           <div className="posts__block">

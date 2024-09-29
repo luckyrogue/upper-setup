@@ -7,7 +7,7 @@ import { CSSProperties, useMemo } from "react";
 import { debounce } from "../../../utils/debounce/debounce.ts";
 import { IHeaderProps } from "./types.ts";
 
-export const Header: React.FC<IHeaderProps> = ({ fetchPosts }) => {
+export const Header: React.FC<IHeaderProps> = ({ query, fetchPosts }) => {
 
   const debouncedFetchPosts = useMemo(
     () =>
@@ -27,7 +27,7 @@ export const Header: React.FC<IHeaderProps> = ({ fetchPosts }) => {
     <header style={headerStyles.header as CSSProperties}>
       <img style={headerStyles.logo} src={assetsConstant.LOGO} alt="" />
       <Input
-        placeholder={"Batman"}
+        placeholder={query}
         maxWidth={"280px"}
         handleInputChange={handleInputChange}
       />
