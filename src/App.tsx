@@ -10,8 +10,7 @@ function App() {
   const { loading, pagination, posts, query, fetchPosts } = useGetPosts();
 
   const handlePageChange = (page: number) => {
-    const searchQuery = "";
-    fetchPosts(searchQuery, page).then((r) => r);
+    fetchPosts(query || "Batman", page).then((r) => r);
   };
 
   if (loading) return <Loader />;
@@ -19,9 +18,9 @@ function App() {
   return (
     <>
       <div className="app">
-        <Header fetchPosts={fetchPosts} query={String(query)} />
+        <Header fetchPosts={fetchPosts} />
         <div className="content">
-          <Results query={String(query)} postsLength={posts?.length }  />
+          <Results query={String(query)} postsLength={Number(pagination?.totalItems)}  />
           <div className="posts__block">
             {posts?.length > 0 ? (
               posts.map((post) => (

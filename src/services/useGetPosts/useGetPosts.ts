@@ -15,6 +15,7 @@ export const useGetPosts = (): TUseGetPosts => {
 
   const fetchPosts = useCallback(
     async (searchQuery: string, page: number = 1) => {
+      setQuery(searchQuery)
       setLoading(true);
       setError(null);
 
