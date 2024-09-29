@@ -8,7 +8,6 @@ import { debounce } from "../../../utils/debounce/debounce.ts";
 import { IHeaderProps } from "./types.ts";
 
 export const Header: React.FC<IHeaderProps> = ({ query, fetchPosts }) => {
-
   const debouncedFetchPosts = useMemo(
     () =>
       debounce((query: string) => {

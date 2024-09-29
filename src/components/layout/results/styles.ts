@@ -1,6 +1,6 @@
 export const resultsStyles = {
   resultsContainer: {
-    margin: '32px 0',
+    margin: "32px 0",
     display: "flex",
     fontSize: "22px",
     alignItems: "center",

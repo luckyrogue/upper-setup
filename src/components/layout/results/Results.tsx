@@ -1,4 +1,4 @@
-import React, { CSSProperties, } from "react";
+import React, { CSSProperties } from "react";
 import { resultsStyles } from "./styles.ts";
 import { IResultsProps } from "./types.ts";
 

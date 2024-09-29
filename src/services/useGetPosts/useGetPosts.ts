@@ -15,7 +15,7 @@ export const useGetPosts = (): TUseGetPosts => {
 
   const fetchPosts = useCallback(
     async (searchQuery: string, page: number = 1) => {
-      setQuery(searchQuery)
+      setQuery(searchQuery);
       setLoading(true);
       setError(null);
 
@@ -29,7 +29,9 @@ export const useGetPosts = (): TUseGetPosts => {
           },
         });
         if (response.data.Response === "True") {
-          const totalItems = Number(response.data.totalResults);
+          const totalItems = response.data.totalResults
+            ? Number(response.data.totalResults)
+            : 0;
           const perPage = 10;
           const totalPages = Math.ceil(totalItems / perPage);
 
@@ -42,6 +44,11 @@ export const useGetPosts = (): TUseGetPosts => {
         } else {
           setPosts([]);
           setError("No posts");
+          setPagination({
+            totalPages: 0,
+            currentPage: page,
+            totalItems: 0,
+          });
         }
       } catch (error) {
         setError("Failed to fetch posts");
@@ -50,9 +57,8 @@ export const useGetPosts = (): TUseGetPosts => {
         setLoading(false);
       }
     },
-    []
+    [],
   );
-
 
   useEffect(() => {
     if (query) {

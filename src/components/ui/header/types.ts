@@ -1,4 +1,4 @@
 export interface IHeaderProps {
-  query: string
+  query: string;
   fetchPosts: (searchQuery: string, page?: number) => Promise<void>;
 }

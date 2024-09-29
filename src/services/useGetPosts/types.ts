@@ -43,7 +43,7 @@ export type TUseGetPosts = {
   error: string | null;
   query: string | undefined;
   setQuery: (query: string | undefined) => void;
-  page: number
+  page: number;
   setPage: (page: number) => void;
   fetchPosts: (searchQuery: string, page?: number) => Promise<void>;
 };

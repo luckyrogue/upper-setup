@@ -20,7 +20,10 @@ function App() {
       <div className="app">
         <Header query={String(query)} fetchPosts={fetchPosts} />
         <div className="content">
-          <Results query={String(query)} postsLength={Number(pagination?.totalItems)}  />
+          <Results
+            query={String(query)}
+            postsLength={Number(pagination?.totalItems)}
+          />
           <div className="posts__block">
             {posts?.length > 0 ? (
               posts.map((post) => (
