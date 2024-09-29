@@ -1,7 +1,7 @@
 export const noImageStyles = {
   box: {
-    height: '100%',
-    width: '100%',
+    height: '270px',
+    width: '245px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
