@@ -2,7 +2,7 @@ export const noResultsStyles = {
   wrapper: {
     height: "100%",
     minHeight: "60vh",
-    "@media (max-width: 768px)": {
+    "@media (maxWidth: 768px)": {
       minHeight: "10vh",
     },
     display: "flex",
