@@ -19,10 +19,10 @@ export const Post: React.FC<IPostProps> = ({
         <NoImage />
       )}
       <div style={postStyles.infoBlock as CSSProperties}>
-        <span>Name: {title}</span>
-        <span>Year: {year}</span>
-        <span>imdbID: {imdbId}</span>
-        <span>Type: {type}</span>
+        <span>Name: {title ?? 'No info'}</span>
+        <span>Year: {year ?? 'No info'}</span>
+        <span>imdbID: {imdbId ?? 'No info'}</span>
+        <span>Type: {type ?? 'No info'}</span>
       </div>
     </div>
   );
