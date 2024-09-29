@@ -1,10 +1,10 @@
 export const postStyles = {
   container: {
-    width: "calc(180px + 5vw)",
-    height: "calc(300px + 5vw)",
+    height: "100%",
+    width: "100%",
   },
   image: {
-    height: "calc(200px + 3vw)",
+    height: "100%",
     width: "100%",
   },
   infoBlock: {

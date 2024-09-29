@@ -29,7 +29,7 @@ export const useGetPosts = (): TUseGetPosts => {
         });
         if (response.data.Response === "True") {
           const totalItems = Number(response.data.totalResults);
-          const perPage = 8;
+          const perPage = 10;
           const totalPages = Math.ceil(totalItems / perPage);
 
           setPosts(response.data.Search);
