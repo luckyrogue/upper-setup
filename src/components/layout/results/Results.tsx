@@ -18,7 +18,7 @@ export const Results: React.FC = () => {
   return (
     <div style={resultsStyles.resultsContainer}>
       You searched for:
-      <span style={resultsStyles.searchQuery}>{searchQuery ?? "Текст"}</span>
+      <span style={resultsStyles.searchQuery}>{searchQuery}</span>
       <div style={resultsStyles.resultsBlock as CSSProperties}>
         {posts?.length ?? 0} results
       </div>

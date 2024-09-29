@@ -4,9 +4,12 @@ import { Header } from "./components/ui/header/Header.tsx";
 import { Post } from "./components/post/Post.tsx";
 import { Results } from "./components/layout/results/Results.tsx";
 import { NoResults } from "./components/layout/noResults/NoResults.tsx";
+import { Loader } from "./components/layout/loader/Loader.tsx";
 
 function App() {
-  const { pagination, posts, fetchPosts } = useGetPosts();
+  const { loading, pagination, posts, fetchPosts } = useGetPosts();
+
+  if (loading) return <Loader />
 
   const handlePageChange = (page: number) => {
     const searchQuery = ''
